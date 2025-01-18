@@ -34,5 +34,29 @@ class User{
         return $this->password;
     }
 
+    public function setLastName($lastname){
+        $this->lastname = $lastname;
+    }
+
+    public function setFirstName($firstname){
+        $this->firstname = $firstname;
+    }
+
+    public function setEmail($email){
+        $this->email = $email;
+    }
+
+    public function setPassword($password){
+        $this->password = $password;
+    }
+
+    public function setId($id){
+        $this->idn = $id;
+    }
+
+    public function __toString(){
+        return $this->firstname . ' ' . $this->lastname;
+    }
+
 
 }

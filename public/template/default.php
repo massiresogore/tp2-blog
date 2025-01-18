@@ -7,14 +7,51 @@
 </head>
 <body>
 
-<nav>
+<?php
+// Debug the session user data
+//var_dump($_SESSION["user"]);
+?>
+
+<nav style="display: flex; justify-content: space-between; align-items: center;">
     <div class="logo">
         <a href="/">Logo</a>
     </div>
     <ul>
-        <li><a href="/">News</a></li>
-        <li><a href="/users/login">Login</a></li>
-        <li><a href="/users/register">Register</a></li>
+        <?php  if(isset($_SESSION["user"])) :?>
+            <li><a href="/">News</a></li>
+
+        <?php else : ?>
+            <li><a href="/users/login">Login</a></li>
+            <li><a href="/users/register">Register</a></li>
+        <?php endif; ?>
+    </ul>
+
+    <?php  if(isset($_SESSION["user"])) :?>
+    <ul style="display: flex; flex-direction: column; list-style: none; margin: 0; padding: 0; gap: 10px;">
+        <li>
+            <a href="/users/profile" style="color: white; text-decoration: none; text-align: left; background-color: #555; padding: 10px 20px; border-radius: 5px; transition: background-color 0.3s ease;">
+                Profile (<?= isset($_SESSION['user']) ? $_SESSION['user']->getFirstname() : "" ?>)
+            </a>
+            <style>
+               
+                a:hover {
+                   cursor: pointer;
+                     background-color: #333;
+                    
+                }
+            </style>
+        </li>
+        <li>
+            <a href="#" style="color: white; text-decoration: none; text-align: left;"><?= isset($_SESSION['user']) ? $_SESSION['user']->getEmail() : "" ?></a>
+        </li>
+        <li>
+            <a href="/users/logout" style="color: white; text-decoration: none; text-align: left;">Logout</a>
+        </li>
+    </ul>
+    <?php endif; ?>
+           
+     
+
     </ul>
 </nav>
 

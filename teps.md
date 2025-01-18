@@ -1,4 +1,14 @@
-# les étape
+# Demarrage et user auth
+
+- auth
+  email: `sogoremassire.fr@gmail.com`
+  pwd: `n`
+
+```bash
+php -S localhost:8000 -t public
+```
+
+## les étape
 
 - creation du dossier public, index
 - creation d'autoload
@@ -6,7 +16,6 @@
 - creation de request
 - creation de router
 - creation de viewer
-
 
 ## La session
 

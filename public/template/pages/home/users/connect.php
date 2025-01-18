@@ -38,15 +38,20 @@
         <h1>Connexion </h1>
 
         <!-- atribut  	idn	title	content	author	date	image	-->
+        <?php if(isset($_SESSION['Authmessage'])): ?>
+            <div style="color:red;">
+                <?= $_SESSION['Authmessage'] ?>
+            </div>
+        <?php endif; ?>
 
         <form action="" method="post" >
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" name="email"  id="email" class="form-control">
+                <input type="email" name="email"  id="email"  value="<?= isset($_SESSION['dataSaveByIncorrect'])  ? $_SESSION['dataSaveByIncorrect']["email"] : "" ?>"  class="form-control">
             </div>
             <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" name="password"  id="password" class="form-control">
+                <label for="pwd">Password</label>
+                <input type="password" name="pwd"  id="pwd" class="form-control">
             </div>
 
             <button type="submit" class="btn btn-primary">Login</button>

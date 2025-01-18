@@ -1,5 +1,4 @@
 
-<?php var_dump($newsToUpdate) ?>
 
 <main>
     <div style="max-width: 700px; margin: 0 auto;">

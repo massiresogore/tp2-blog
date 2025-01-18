@@ -1,7 +1,4 @@
-<?php
-// Debug the session user data
-var_dump($_SESSION["user"]);
-?>
+
 <main>
     <h1>List des actuallités de la plu récente à la plus ancienne</h1>
   
