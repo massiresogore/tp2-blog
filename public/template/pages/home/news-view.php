@@ -35,7 +35,7 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             padding: 15px;
-            width: calc(36.333% - 20px);
+            width: calc(23% - 20px);
             box-sizing: border-box;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
@@ -92,24 +92,18 @@
 
     </style>
 <div  id="news-containers">
-    <?php  foreach ($newsDatas as $news) : ?>
         <div class="news-item">
-            <h2><?= $news->getTitle(); ?></h2>
-            <p><?= $news->getContent(); ?></p>
-            <p><strong>Author:</strong> <?= $news->getAuthor(); ?></p>
-            <p><strong>Date:</strong> <?= $news->getDate(); ?></p>
-            <img src="<?="../../../images/".$news->getImage(); ?>" alt="News Image">
-            <img src="../../../images/" alt="">
+            <h2><?= $new->getTitle(); ?></h2>
+            <p><?= $new->getContent(); ?></p>
+            <p><strong>Author:</strong> <?= $new->getAuthor(); ?></p>
+            <p><strong>Date:</strong> <?= $new->getDate(); ?></p>
+            <img src="<?="../../../images/".$new->getImage(); ?>" alt="News Image">
             <div class="actions">
-                <a href="/news/edit/<?= $news->getIdn() ?>" class="edit-btn">Edit</a>
-                <a href="/news/delete/<?= $news->getIdn() ?>" class="delete-btn">Delete</a>
+                <a href="/news/edit?id=<?= $new->getIdn() ?>" class="edit-btn">Edit</a>
+                <a href="/news/delete?id=<?= $new->getIdn() ?>" class="delete-btn">Delete</a>
                 <a href="/news/add" class="delete-btn">Ajouter des news</a>
             </div>
-            <style>
-               
-            </style>
         </div>
-    <?php endforeach; ?>
 </div>
 
 

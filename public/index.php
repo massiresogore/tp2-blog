@@ -17,6 +17,14 @@ $application = new Application();
 $application->router->get('/', [BlogController::class, 'index']);
 $application->router->get('/news/add', [BlogController::class, 'ajouterNews']);
 $application->router->post('/news/add', [BlogController::class, 'createNews']);
+$application->router->get('/news/view', [BlogController::class, 'newsList']);
+
+// Edit
+$application->router->get('/news/edit', [BlogController::class, 'editNews']);
+$application->router->post('/news/edit', [BlogController::class, 'createEditNews']);
+
+// Delete
+$application->router->get('/news/delete', [BlogController::class, 'deleteNews']);
 
 $application->run();
 
