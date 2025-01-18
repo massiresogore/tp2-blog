@@ -4,13 +4,15 @@ namespace App\Service;
 
 use App\Controller\ViewController;
 use App\Core\Request;
-use App\Model\NewsStorage;
+use App\Model\News\NewsStorage;
+use App\Model\Users\UsersStorage;
 
 abstract class Container
 {
     private ?Request $request = null;
     private ?ViewController $viewController = null;
     private ?NewsStorage $newsStorage = null;
+    private ?UsersStorage $usersStorage = null;
     
 
 
@@ -43,5 +45,23 @@ abstract class Container
         var_dump($data);
         echo '</pre>';
       }
+
+
+      //cree une fonction qui enregistrer la session
+        public function setSession($key, $value){
+            $_SESSION[$key] = $value;
+        }
+        //cree une fonction qui recupere la session
+        public function getSession($key){
+            return $_SESSION[$key];
+        }
+
+        public function getUsersStorage(): UsersStorage
+        {
+            if ($this->usersStorage === null) {
+                $this->usersStorage = new UsersStorage();
+            }
+            return $this->usersStorage;
+        }
    
 }

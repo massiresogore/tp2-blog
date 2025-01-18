@@ -69,7 +69,7 @@
                 const path ="../../../images/";
 
                 if (imageForUpdateName !== "") {
-                    document.getElementById('imagePreview').src = path + <?= json_encode($newsToUpdate->getImage()) ?>;
+                    document.getElementById('imagePreview').src = path + <?= json_encode(isset($_GET['id'])  ? $newsToUpdate->getImage() : " ") ?>;
                     document.getElementById('imagePreview').style.display = 'block';
                 }
                 function previewImage(event) {

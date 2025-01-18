@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Model\newsModel;
-use App\Model\NewsStorage;
+use App\Model\News\newsModel;
+use App\Model\News\NewsStorage;
 use App\Service\Container;
 
 class BlogController extends Container
@@ -27,10 +27,6 @@ class BlogController extends Container
         );
         $newsDatas[] = $new;
       }
-
-     
-
-
 
       return $this->getViewController()->render('home/news-list', ['newsDatas' => $newsDatas]);
     }
@@ -61,6 +57,7 @@ class BlogController extends Container
 
       return $this->getViewController()->render('home/news-add');
     }
+  
 
     public function createNews()
     {
@@ -187,8 +184,6 @@ class BlogController extends Container
           header('Location: /news/edit?id='.$news->getIdn());
 
         }
-
-            
       }
 
 

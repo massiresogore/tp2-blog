@@ -1,25 +1,20 @@
 <?php
-namespace App\Model;
+namespace App\Model\News;
 
 
 class NewsModel
 {
-    private $idn;
-    private $title;
-    private $content;
-    private $author;
-    private $date;
-    private $image;
+ 
 
-    public function __construct($idn, $title, $content, $author, $date, $image)
-    {
-        $this->idn = $idn;
-        $this->title = $title;
-        $this->content = $content;
-        $this->author = $author;
-        $this->date = $date;
-        $this->image = $image;
-    }
+    public function __construct(
+        private $idn,
+        private $title,
+        private $content,
+        private $author,
+        private $date,
+        private $image,
+        )
+    {}
 
     public function getIdn()
     {

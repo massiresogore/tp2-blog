@@ -12,7 +12,9 @@
         <a href="/">Logo</a>
     </div>
     <ul>
-        <li><a href="/news/add">Ajout news</a></li>
+        <li><a href="/">News</a></li>
+        <li><a href="/users/login">Login</a></li>
+        <li><a href="/users/register">Register</a></li>
     </ul>
 </nav>
 

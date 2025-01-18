@@ -20,7 +20,7 @@ create table IF NOT EXISTS  `users`(
 	idn int not null auto_increment PRIMARY KEY,
     lastname varchar(100),
     firstname varchar(100),
-    email varchar(100),
+    email varchar(100) unique,
     pwd varchar(500)
 );
 

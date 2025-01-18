@@ -6,3 +6,8 @@
 - creation de request
 - creation de router
 - creation de viewer
+
+
+## La session
+
+je lai demarré après l'autoload car il me generait des messages d'ereur
