@@ -1,8 +1,8 @@
 # Demarrage et user auth
 
 - auth
-  email: `sogoremassire.fr@gmail.com`
-  pwd: `n`
+  email: `massire@gmail.com`
+  pwd: `m`
 
 ```bash
 php -S localhost:8000 -t public

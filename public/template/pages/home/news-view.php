@@ -91,6 +91,8 @@
                 }
 
     </style>
+  
+
 <div  id="news-containers">
         <div class="news-item">
             <h2><?= $new->getTitle(); ?></h2>

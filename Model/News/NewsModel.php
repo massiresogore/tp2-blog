@@ -13,6 +13,7 @@ class NewsModel
         private $author,
         private $date,
         private $image,
+        private $userId,
         )
     {}
 
@@ -74,5 +75,15 @@ class NewsModel
     public function setImage($image)
     {
         $this->image = $image;
+    }
+
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
     }
 }

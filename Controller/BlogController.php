@@ -8,6 +8,14 @@ use App\Service\Container;
 
 class BlogController extends Container
 {
+    private ?int $userId;
+
+    public function __construct()
+    {
+        $this->userId = isset($_SESSION['user']) ? $_SESSION['user']->getId() : null;
+    }
+
+    
     public function index()
     {
 
@@ -23,7 +31,8 @@ class BlogController extends Container
           $newData['content'],
           $newData['author'],
           $newData['date'],
-          $newData['image']
+          $newData['image'],
+          $this->userId
         );
         $newsDatas[] = $new;
       }
@@ -44,7 +53,8 @@ class BlogController extends Container
               $newsData['content'],
               $newsData['author'],
               $newsData['date'],
-              $newsData['image']
+              $newsData['image'],
+              $this->userId
             );
       }
 
@@ -65,8 +75,6 @@ class BlogController extends Container
 
       if($this->getRequest()->isPost()){
         $data = $this->getRequest()->getData();
-
-
 
         // Handle image upload
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
@@ -97,10 +105,9 @@ class BlogController extends Container
             $data['content'],
             $data['author'],
             $data['date'],
-            $data['image']
+            $data['image'],
+            $this->userId
         );
-
-        var_dump($news);
 
         // Save news to storage
           $this->getNewsStorage()->addNews($news->getTitle(), $news->getContent(), $news->getAuthor(), $news->getDate(), $news->getImage());
@@ -121,17 +128,33 @@ class BlogController extends Container
 
     public function editNews()
     {
-      $newsToUpdateData = null;
+    
+      //Il faut etre connecter pour acceder à cette page
+      if (!isset($_SESSION['user'])) {
+        header('Location: /');
+      }
+   
+      $newsToUpdate = null;
+
       if(isset($_GET['id'])){
         $id = $_GET['id'];
         $newsData = $this->getNewsStorage()->getNewsById($id);
+         
+        if($this->userId !== $newsData['user_id']){
+          //Créer une session message
+          $_SESSION['newsMessage'] = 'La news ne vous appartient pas 🤪';
+          //Rediriger vers la page d'accueil
+          header('Location: /');    
+        }
+
         $newsToUpdate = new NewsModel(
           $newsData['idn'],
           $newsData['title'],
           $newsData['content'],
           $newsData['author'],
           $newsData['date'],
-          $newsData['image']
+          $newsData['image'],
+          $this->userId
         );
       }
      
@@ -139,9 +162,20 @@ class BlogController extends Container
     }
 
     public function createEditNews(){
+   
       if(isset($_GET['id'])){
         $id = $_GET['id'];
         $newsData = $this->getNewsStorage()->getNewsById($id);
+
+        //On vérifit si l'id de get === id de la news
+   
+        if ($id === $newsData->getUserId()) {
+        } else {
+          //Créer une session message
+          $_SESSION['newsMessage'] = 'La news ne vous appartient pas 🤪';
+          //Rediriger vers la page d'accueil
+          header('Location: /');
+        }
         if ($this->getRequest()->isPost()) {
           $data = $this->getRequest()->getData();
 
@@ -167,7 +201,8 @@ class BlogController extends Container
             $data['content'],
             $data['author'],
             null,
-            $data['image']
+            $data['image'],
+            $this->userId
           );
 
           // var_dump($news);

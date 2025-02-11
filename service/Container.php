@@ -64,7 +64,7 @@ abstract class Container
             return $this->usersStorage;
         }
 
-        public function auth(){
+       public static function auth(){
             if(isset($_SESSION['user'])){
                 header('Location: /');
               }        

@@ -34,6 +34,17 @@
                 background-color: #0056b3;
             }
     </style>
+       <div class="flashMessage">
+        <?php if (isset($_SESSION['newsMessage'])) { ?>
+            <div class="session">
+                <div class="flash-color visibilityVisible">
+                    <div class='flash <?= isset($_SESSION['newsMessage']) ?  $_SESSION['newsMessage'] : "" ?>'><?=$_SESSION['newsMessage']?></div>
+                    <?php unset($_SESSION['newsMessage']); ?>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
+
     <div style="max-width: 700px; margin: 0 auto;">
         <h1>Ajouter d'actualité</h1>
 

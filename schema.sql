@@ -24,3 +24,4 @@ create table IF NOT EXISTS  `users`(
     pwd varchar(500)
 );
 
+ALTER TABLE news ADD COLUMN user_id int , ADD CONSTRAINT `user_id_fkey` FOREIGN KEY (user_id) REFERENCES users (`idn`) on DELETE NO ACTION on UPDATE CASCADE;

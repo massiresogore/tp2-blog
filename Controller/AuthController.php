@@ -10,7 +10,7 @@ class AuthController extends Container
 
     public function registerPage()
     {
-        $this->auth();
+        static::auth();
         return $this->getViewController()->render('home/users/registration');
     }
 
@@ -18,7 +18,7 @@ class AuthController extends Container
     {
 
         //Ma fonction fetiche 😃, i love coding 🤓
-        $this->auth();
+        static::auth();
         return $this->getViewController()->render('home/users/connect');
     }
 
