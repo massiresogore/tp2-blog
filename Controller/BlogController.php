@@ -24,6 +24,7 @@ class BlogController extends Container
 
       $newsData = $storage->getNews();
       
+   
       foreach($newsData as $newData){
         $new = new NewsModel(
           $newData['idn'],
@@ -32,7 +33,7 @@ class BlogController extends Container
           $newData['author'],
           $newData['date'],
           $newData['image'],
-          $this->userId
+          $newData['user_id']
         );
         $newsDatas[] = $new;
       }
@@ -54,7 +55,7 @@ class BlogController extends Container
               $newsData['author'],
               $newsData['date'],
               $newsData['image'],
-              $this->userId
+              $newsData['user_id']
             );
       }
 

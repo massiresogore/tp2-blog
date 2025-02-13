@@ -101,9 +101,11 @@
             <p><strong>Date:</strong> <?= $new->getDate(); ?></p>
             <img src="<?="../../../images/".$new->getImage(); ?>" alt="News Image">
             <div class="actions">
+                <?php if (isset($_SESSION['user'])&& $_SESSION['user']->getId() === $new->getUserId() ) : ?>
+                    <a href="/news/add" class="delete-btn">Ajouter des news</a>
                 <a href="/news/edit?id=<?= $new->getIdn() ?>" class="edit-btn">Edit</a>
                 <a href="/news/delete?id=<?= $new->getIdn() ?>" class="delete-btn">Delete</a>
-                <a href="/news/add" class="delete-btn">Ajouter des news</a>
+                <?php endif; ?>
             </div>
         </div>
 </div>

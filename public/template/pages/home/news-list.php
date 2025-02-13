@@ -1,6 +1,7 @@
 
 <main>
     <h1>List des actuallités de la plu récente à la plus ancienne</h1>
+    <a href="/news/add" class="add-new"><button class="add-new">Ajouter des news</button></a>
   
 <div  id="news-containers">
     <?php  foreach ($newsDatas as $news) : ?>
@@ -50,6 +51,23 @@
     .edit-btn:hover {
         background-color: #0056b3;
     }
+
+    .add-new {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: #fff;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .add-new:hover {
+        background-color: #218838;
+    }
+</style>
     
 </style>
 </main>
